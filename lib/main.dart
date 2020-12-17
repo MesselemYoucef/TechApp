@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'screens/home_screen.dart';
+import 'package:petsApp/screens/drawer_screen.dart';
 
 void main() {
   runApp(MaterialApp(home: HomePage()));
@@ -7,6 +9,13 @@ void main() {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+     body: Stack(
+       children: [
+          DrawerScreen(),
+          HomeScreen()
+       ],
+     )
+    );
   }
 }
