@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petsApp/screens/product_screen.dart';
 import '../configuration.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -81,111 +82,117 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(
-            height: 120,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: categories.length,
-              itemBuilder: (context, index){
-                return Container(
-                  child: Column(
-                    children:[
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.only(left: 20),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: shadowList,
-                          borderRadius: BorderRadius.circular(10)
-                        ),
-                        child: Image.asset(
-                          categories[index]["iconPath"],
-                          height: 50,
-                          width: 50,
-                          color: Colors.grey[700],
-                        ),
-                      ),
-                      Text(categories[index]["name"])
-                    ]
-                  ),
-                );
-              },
-              ),
-
-            ),
-            
-            Container(
-              height: 240,
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Stack(
-                      children: [
+              height: 120,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: categories.length,
+                itemBuilder: (context, index){
+                  return Container(
+                    child: Column(
+                      children:[
                         Container(
+                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.only(left: 20),
                           decoration: BoxDecoration(
-                            color: Colors.blueGrey[500],
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: shadowList
+                            color: Colors.white,
+                            boxShadow: shadowList,
+                            borderRadius: BorderRadius.circular(10)
                           ),
-                          margin: EdgeInsets.only(top: 40)
+                          child: Image.asset(
+                            categories[index]["iconPath"],
+                            height: 50,
+                            width: 50,
+                            color: Colors.grey[700],
+                          ),
                         ),
-                        Align(
-                          alignment: Alignment(0.0, 0.0),
-                          child: Image.asset("images/pet-cat1.png")
-                        )
-                      ],
+                        Text(categories[index]["name"])
+                      ]
                     ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(top: 60, bottom: 20),
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                      decoration: BoxDecoration(
-                        boxShadow: shadowList,
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomRight: Radius.circular(20))
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children:[
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Carrot",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold
-                                  ),
-                                  ),
-                                Icon(Icons.face)
-                              ],
-                            ),
-                         
-                          Text(
-                            "Arabian Mao", 
-                            style: TextStyle(
-                              fontSize:  15.0,
-                            ),
-                          ),
-                          Text("2 years old"),
+                  );
+                },
+                ),
+
+              ),
+         
+            
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductScreen()));
+              },
+              child: Container(
+                height: 240,
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Stack(
+                        children: [
                           Container(
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.location_on,
-                                  color: Colors.blueGrey,
-                                  ),
-                                Text("Distance: 2KM")
-                              ]
+                            decoration: BoxDecoration(
+                              color: Colors.blueGrey[500],
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: shadowList
                             ),
+                            margin: EdgeInsets.only(top: 40)
+                          ),
+                          Align(
+                            alignment: Alignment(0.0, 0.0),
+                            child: Image.asset("images/pet-cat2.png")
                           )
-                        ]
+                        ],
                       ),
                     ),
-                  )
-                ],
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.only(top: 60, bottom: 20),
+                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        decoration: BoxDecoration(
+                          boxShadow: shadowList,
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomRight: Radius.circular(20))
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children:[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Carrot",
+                                    style: TextStyle(
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.bold
+                                    ),
+                                    ),
+                                  Icon(Icons.face)
+                                ],
+                              ),
+                           
+                            Text(
+                              "Arabian Mao", 
+                              style: TextStyle(
+                                fontSize:  15.0,
+                              ),
+                            ),
+                            Text("2 years old"),
+                            Container(
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.location_on,
+                                    color: Colors.blueGrey,
+                                    ),
+                                  Text("Distance: 2KM")
+                                ]
+                              ),
+                            )
+                          ]
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Container(
@@ -206,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Align(
                           alignment: Alignment(0.0, 0.0),
-                          child: Image.asset("images/pet-cat2.png")
+                          child: Image.asset("images/pet-cat1.png")
                         )
                       ],
                     ),
