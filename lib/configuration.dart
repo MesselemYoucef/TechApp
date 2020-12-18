@@ -9,7 +9,7 @@ List<BoxShadow> shadowList = [
 List<Map> categories = [
   {'name': 'Cats', 'iconPath': 'images/cat.png'},
   {'name': 'Dogs', 'iconPath': 'images/dog.png'},
-  {'name': 'Bunnies', 'iconPath': 'images/rabbit'},
-  {'name': 'Parrots', 'iconPath': 'images/parrot'},
+  {'name': 'Bunnies', 'iconPath': 'images/rabbit.png'},
+  {'name': 'Parrots', 'iconPath': 'images/parrot.png'},
   {'name': 'Horses', 'iconPath': 'images/horse.png'}
 ];
