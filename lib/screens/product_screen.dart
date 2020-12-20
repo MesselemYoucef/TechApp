@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:petsApp/configuration.dart';
 
@@ -51,7 +53,10 @@ class ProductScreen extends StatelessWidget {
               margin: EdgeInsets.only(top: 20),
               child: Align(
                 alignment: Alignment.topCenter,
-                child: Image.asset('images/pet-cat2.png'),
+                child: Hero(
+                  tag: 1,
+                  child: Image.asset('images/pet-cat2.png')
+                  ),
               ),
             ),
             Align(
@@ -69,8 +74,46 @@ class ProductScreen extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.only(bottom: 40),
                 height:150,
-                color: Colors.black,
+                decoration: BoxDecoration(
+                  color: Colors.grey[100],
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20))
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  
+                  children: <Widget>[
+                    Container(
+                      height:60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        color: primaryGreen,
+                        borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Icon(Icons.favorite_border, color: Colors.white,),
+                    ),
+                    Container(
+                      height: 60,
+                      width: 200,
+                      decoration: BoxDecoration(
+                        color: primaryGreen,
+                        borderRadius: BorderRadius.circular(20)
+                      ),
+                      
+                      child: Center(
+                        child: Text("Adoption",
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                        )
+                        ),
+                    )
+                  ],
+                ),
               ),
             )
         ],

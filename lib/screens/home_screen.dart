@@ -137,7 +137,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Align(
                             alignment: Alignment(0.0, 0.0),
-                            child: Image.asset("images/pet-cat2.png")
+                            child: Hero(
+                              tag: 1,
+                              child: Image.asset("images/pet-cat2.png")
+                              )
                           )
                         ],
                       ),
