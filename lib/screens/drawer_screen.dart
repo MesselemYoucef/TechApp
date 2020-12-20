@@ -39,20 +39,25 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ),
           Column(
             children: drawerItems
-                .map((element) => Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            element['icon'],
-                            color: Colors.white,
-                            size: 30,
-                          ),
-                          SizedBox(width: 10),
-                          Text(element['title'],
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20))
-                        ],
+                .map((element) => GestureDetector(
+                      onTap: () {
+                        print("it is tapped");
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Icon(
+                              element['icon'],
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            SizedBox(width: 10),
+                            Text(element['title'],
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20))
+                          ],
+                        ),
                       ),
                     ))
                 .toList(),
@@ -76,9 +81,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 height: 20,
                 color: Colors.white,
               ),
-              SizedBox(
-                width: 10,
-              ),
+              VerticalDivider(),
               Text("Logout",
                   style: TextStyle(
                       color: Colors.white,

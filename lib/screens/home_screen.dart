@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   return Container(
                     child: Column(children: [
                       Container(
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(8),
                         margin: EdgeInsets.only(left: 20),
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -107,7 +107,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.grey[700],
                         ),
                       ),
-                      Text(categories[index]["name"])
+                      SizedBox(height: 5),
+                      Container(
+                          margin: EdgeInsets.only(left: 20),
+                          child: Text(categories[index]["name"]))
                     ]),
                   );
                 },
