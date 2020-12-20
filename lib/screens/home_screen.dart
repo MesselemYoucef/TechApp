@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petsApp/screens/item_tile.dart';
 import 'package:petsApp/screens/product_screen.dart';
 import '../configuration.dart';
 
@@ -25,244 +26,112 @@ class _HomeScreenState extends State<HomeScreen> {
       decoration: BoxDecoration(
           color: Colors.grey[200],
           borderRadius: BorderRadius.circular(curvedEdges)),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 50),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
+      child: Column(
+        children: [
+          SizedBox(height: 50),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                isDrawerOpen
+                    ? IconButton(
+                        icon: Icon(Icons.menu),
+                        onPressed: () {
+                          setState(() {
+                            xOffset = 0;
+                            yOffset = 0;
+                            scaleFactor = 1;
+                            curvedEdges = 0;
+                            isDrawerOpen = false;
+                          });
+                        })
+                    : IconButton(
+                        icon: Icon(Icons.menu),
+                        onPressed: () {
+                          setState(() {
+                            xOffset = 300;
+                            yOffset = 100;
+                            scaleFactor = 0.8;
+                            curvedEdges = 40;
+                            isDrawerOpen = true;
+                          });
+                        }),
+                Column(children: [
+                  Text("Location"),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on, color: primaryGreen),
+                      Text("Dubai"),
+                    ],
+                  ),
+                ]),
+                CircleAvatar(
+                  backgroundColor: Colors.blue,
+                )
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20), color: Colors.white),
+            child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  isDrawerOpen
-                      ? IconButton(
-                          icon: Icon(Icons.menu),
-                          onPressed: () {
-                            setState(() {
-                              xOffset = 0;
-                              yOffset = 0;
-                              scaleFactor = 1;
-                              curvedEdges = 0;
-                              isDrawerOpen = false;
-                            });
-                          })
-                      : IconButton(
-                          icon: Icon(Icons.menu),
-                          onPressed: () {
-                            setState(() {
-                              xOffset = 300;
-                              yOffset = 100;
-                              scaleFactor = 0.8;
-                              curvedEdges = 40;
-                              isDrawerOpen = true;
-                            });
-                          }),
-                  Column(children: [
-                    Text("Location"),
-                    Row(
-                      children: [
-                        Icon(Icons.location_on, color: primaryGreen),
-                        Text("Dubai"),
-                      ],
-                    ),
-                  ]),
-                  CircleAvatar(
-                    backgroundColor: Colors.blue,
-                  )
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20), color: Colors.white),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(Icons.search),
-                    Text("Search to adopt"),
-                    Icon(Icons.settings)
-                  ]),
-            ),
-            Container(
-              height: 120,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: categories.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    child: Column(children: [
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        margin: EdgeInsets.only(left: 20),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: shadowList,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Image.asset(
-                          categories[index]["iconPath"],
-                          height: 50,
-                          width: 50,
-                          color: Colors.grey[700],
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Container(
-                          margin: EdgeInsets.only(left: 20),
-                          child: Text(categories[index]["name"]))
-                    ]),
-                  );
-                },
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ProductScreen()));
-              },
-              child: Container(
-                height: 240,
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Stack(
-                        children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey[500],
-                                  borderRadius: BorderRadius.circular(20),
-                                  boxShadow: shadowList),
-                              margin: EdgeInsets.only(top: 40)),
-                          Align(
-                              alignment: Alignment(0.0, 0.0),
-                              child: Hero(
-                                  tag: 1,
-                                  child: Image.asset("images/pet-cat2.png")))
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.only(top: 60, bottom: 20),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(20),
-                                bottomRight: Radius.circular(20))),
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Carrot",
-                                    style: TextStyle(
-                                        fontSize: 25.0,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Icon(Icons.face)
-                                ],
-                              ),
-                              Text(
-                                "Arabian Mao",
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                ),
-                              ),
-                              Text("2 years old"),
-                              Container(
-                                child: Row(children: [
-                                  Icon(
-                                    Icons.location_on,
-                                    color: Colors.blueGrey,
-                                  ),
-                                  Text("Distance: 2KM")
-                                ]),
-                              )
-                            ]),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              height: 240,
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                            decoration: BoxDecoration(
-                              color: Colors.orange[100],
-                              borderRadius: BorderRadius.circular(20),
-                              //boxShadow: shadowList
-                            ),
-                            margin: EdgeInsets.only(top: 40)),
-                        Align(
-                            alignment: Alignment(0.0, 0.0),
-                            child: Image.asset("images/pet-cat1.png"))
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(top: 60, bottom: 20),
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                  Icon(Icons.search),
+                  Text("Search to adopt"),
+                  Icon(Icons.settings)
+                ]),
+          ),
+          Container(
+            height: 120,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: categories.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  child: Column(children: [
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      margin: EdgeInsets.only(left: 20),
                       decoration: BoxDecoration(
-                          boxShadow: shadowList,
                           color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(20),
-                              bottomRight: Radius.circular(20))),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Carrot",
-                                  style: TextStyle(
-                                      fontSize: 25.0,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Icon(Icons.face)
-                              ],
-                            ),
-                            Text(
-                              "Arabian Mao",
-                              style: TextStyle(
-                                fontSize: 15.0,
-                              ),
-                            ),
-                            Text("2 years old"),
-                            Container(
-                              child: Row(children: [
-                                Icon(
-                                  Icons.location_on,
-                                  color: Colors.blueGrey,
-                                ),
-                                Text("Distance: 2KM")
-                              ]),
-                            )
-                          ]),
+                          boxShadow: shadowList,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Image.asset(
+                        categories[index]["iconPath"],
+                        height: 50,
+                        width: 50,
+                        color: Colors.grey[700],
+                      ),
                     ),
-                  )
-                ],
-              ),
+                    SizedBox(height: 5),
+                    Container(
+                        margin: EdgeInsets.only(left: 20),
+                        child: Text(categories[index]["name"]))
+                  ]),
+                );
+              },
             ),
-          ],
-        ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              
+              itemCount: itemDetails.length,
+              itemBuilder: (context, index) {
+                return ItemTile(
+                  name: itemDetails[index]['name'],
+                  race: itemDetails[index]['race'],
+                  age: itemDetails[index]['age'],
+                  distance: itemDetails[index]['distance'],
+                  image: itemDetails[index]['image'],
+                  );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -23,3 +23,35 @@ List<Map> drawerItems = [
   {'icon': Icons.mail, 'title': 'Messages'},
   {'icon': FontAwesomeIcons.userAlt, 'title': 'Profile'}
 ];
+
+
+List <Map> itemDetails = [
+  {
+    'name' : 'Youcef',
+    'race' : 'Arabian Mao',
+    'age' : '2 years',
+    'distance' : '2 KM',
+    'image' : 'images/pet-cat1.png',
+  },
+  {
+    'name' : 'Youcef',
+    'race' : 'Arabian Mao',
+    'age' : '2 years',
+    'distance' : '2 KM',
+    'image' : 'images/pet-cat2.png',
+  },
+  {
+    'name' : 'Youcef',
+    'race' : 'Arabian Mao',
+    'age' : '2 years',
+    'distance' : '2 KM',
+    'image' : 'images/pet-cat1.png',
+  },
+  {
+    'name' : 'Youcef',
+    'race' : 'Arabian Mao',
+    'age' : '2 years',
+    'distance' : '2 KM',
+    'image' : 'images/pet-cat2.png',
+  },
+];
