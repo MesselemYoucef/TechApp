@@ -118,16 +118,15 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Expanded(
             child: ListView.builder(
-              
               itemCount: itemDetails.length,
               itemBuilder: (context, index) {
                 return ItemTile(
-                  name: itemDetails[index]['name'],
-                  race: itemDetails[index]['race'],
-                  age: itemDetails[index]['age'],
+                  productName: itemDetails[index]['productName'],
+                  price: itemDetails[index]['price'],
+                  condition: itemDetails[index]['condition'],
                   distance: itemDetails[index]['distance'],
                   image: itemDetails[index]['image'],
-                  );
+                );
               },
             ),
           ),

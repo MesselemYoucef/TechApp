@@ -24,34 +24,33 @@ List<Map> drawerItems = [
   {'icon': FontAwesomeIcons.userAlt, 'title': 'Profile'}
 ];
 
-
-List <Map> itemDetails = [
+List<Map> itemDetails = [
   {
-    'name' : 'Youcef',
-    'race' : 'Arabian Mao',
-    'age' : '2 years',
-    'distance' : '2 KM',
-    'image' : 'images/pet-cat1.png',
+    'productName': 'CCTV Camera1',
+    'price': '99.99 AED',
+    'condition': '2 years',
+    'distance': '2 KM',
+    'image': 'images/CCTV-Camera1.png',
   },
   {
-    'name' : 'Youcef',
-    'race' : 'Arabian Mao',
-    'age' : '2 years',
-    'distance' : '2 KM',
-    'image' : 'images/pet-cat2.png',
+    'productName': 'CCTV Camera2',
+    'price': '99.99 AED',
+    'condition': '2 years',
+    'distance': '2 KM',
+    'image': 'images/CCTV-Camera2.png',
   },
   {
-    'name' : 'Youcef',
-    'race' : 'Arabian Mao',
-    'age' : '2 years',
-    'distance' : '2 KM',
-    'image' : 'images/pet-cat1.png',
+    'productName': 'CCTV Camera Dome 1',
+    'price': '99.99 AED',
+    'condition': '2 years',
+    'distance': '2 KM',
+    'image': 'images/CCTV-Dome-Camera1.png',
   },
   {
-    'name' : 'Youcef',
-    'race' : 'Arabian Mao',
-    'age' : '2 years',
-    'distance' : '2 KM',
-    'image' : 'images/pet-cat2.png',
+    'productName': 'CCTV Camera Dome 2',
+    'price': '99.99 AED',
+    'condition': '2 years',
+    'distance': '2 KM',
+    'image': 'images/CCTV-Dome-Camera2.png',
   },
 ];
