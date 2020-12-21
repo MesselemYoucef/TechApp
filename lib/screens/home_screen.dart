@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:petsApp/screens/item_tile.dart';
-import 'package:petsApp/screens/product_screen.dart';
 import '../configuration.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
           borderRadius: BorderRadius.circular(curvedEdges)),
       child: Column(
         children: [
-          SizedBox(height: 50),
+          SizedBox(height: 30),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 20),
             child: Row(
@@ -66,27 +65,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ]),
-                CircleAvatar(
-                  backgroundColor: Colors.blue,
-                )
+                Icon(Icons.mail, color: Colors.grey[800],)
               ],
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20), color: Colors.white),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Icon(Icons.search),
-                  Text("Search to adopt"),
+                  Text("Search Product", style: TextStyle(color: Colors.grey, fontSize: 15),),
                   Icon(Icons.settings)
                 ]),
           ),
           Container(
-            height: 120,
+            height: 80,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: categories.length,
@@ -102,8 +99,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(10)),
                       child: Image.asset(
                         categories[index]["iconPath"],
-                        height: 50,
-                        width: 50,
+                        height: 30,
+                        width: 30,
                         color: Colors.grey[700],
                       ),
                     ),

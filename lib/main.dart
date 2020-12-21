@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
-import 'package:petsApp/screens/drawer_screen.dart';
+import 'package:petsApp/home_page.dart';
+import 'package:petsApp/screens/product_screen.dart';
+
 
 void main() {
-  runApp(MaterialApp(home: HomePage()));
+  //runApp(MaterialApp(home: HomePage()));
+  runApp(MyApp());
 }
 
-class HomePage extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-     body: Stack(
-       children: [
-          DrawerScreen(),
-          HomeScreen()
-       ],
-     )
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+        '/product_screen': (context) => ProductScreen()
+      },
     );
   }
 }

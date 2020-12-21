@@ -17,19 +17,17 @@ class _DrawerScreenState extends State<DrawerScreen> {
         children: <Widget>[
           Row(
             children: <Widget>[
-              CircleAvatar(
-                backgroundColor: Colors.blue,
-              ),
               SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("Youcef Messelem",
+                  Text("Company Logo",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 20)),
-                  Text("Active Status",
+                          fontSize: 30)),
+                  SizedBox(height: 10),
+                  Text("Company Description",
                       style: TextStyle(
                         color: Colors.white,
                       ))

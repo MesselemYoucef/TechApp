@@ -17,7 +17,7 @@ class ItemTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 240,
+      height: 220,
       margin: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
@@ -26,14 +26,14 @@ class ItemTile extends StatelessWidget {
               children: [
                 Container(
                     decoration: BoxDecoration(
-                        color: Colors.blueGrey[500],
+                        color: itemBackground,
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(10),
                             bottomRight: Radius.circular(20),
                             topLeft: Radius.circular(20),
                             topRight: Radius.circular(10)),
-                        boxShadow: shadowList),
-                    margin: EdgeInsets.only(top: 40)),
+                        ),
+                    margin: EdgeInsets.only(top: 20)),
                 Align(
                     alignment: Alignment(0.0, 0.0),
                     child: Hero(tag: 1, child: Image.asset(image)))
@@ -53,16 +53,10 @@ class ItemTile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          productName,
-                          style: TextStyle(
-                              fontSize: 15.0, fontWeight: FontWeight.bold),
-                        ),
-                        Icon(Icons.face)
-                      ],
+                    Text(
+                      productName,
+                      style: TextStyle(
+                          fontSize: 15.0, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       price,
