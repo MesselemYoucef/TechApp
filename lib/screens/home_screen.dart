@@ -65,7 +65,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ]),
-                Icon(Icons.mail, color: Colors.grey[800],)
+                Icon(
+                  Icons.mail,
+                  color: Colors.grey[800],
+                )
               ],
             ),
           ),
@@ -78,7 +81,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Icon(Icons.search),
-                  Text("Search Product", style: TextStyle(color: Colors.grey, fontSize: 15),),
+                  Text(
+                    "Search Product",
+                    style: TextStyle(color: Colors.grey, fontSize: 15),
+                  ),
                   Icon(Icons.settings)
                 ]),
           ),
@@ -96,18 +102,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: shadowList,
-                          borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(5)),
                       child: Image.asset(
                         categories[index]["iconPath"],
-                        height: 30,
-                        width: 30,
+                        height: 40,
+                        width: 40,
                         color: Colors.grey[700],
+                        fit: BoxFit.contain,
                       ),
                     ),
                     SizedBox(height: 5),
                     Container(
                         margin: EdgeInsets.only(left: 20),
-                        child: Text(categories[index]["name"]))
+                        child: Text(
+                          categories[index]["name"],
+                          style: TextStyle(
+                              fontSize: 10, fontWeight: FontWeight.bold),
+                        ))
                   ]),
                 );
               },
