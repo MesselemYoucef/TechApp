@@ -7,6 +7,7 @@ class ItemTile extends StatelessWidget {
   final String condition;
   final String distance;
   final String image;
+  
 
   ItemTile(
       {this.productName,
@@ -18,7 +19,11 @@ class ItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product_screen');
+        //Navigator.pushNamed(context, '/product_screen');
+        
+          Navigator.pushNamed(context, '/product_screen');
+       
+        
       },
       child: Container(
         height: 220,
