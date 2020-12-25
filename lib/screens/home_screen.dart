@@ -62,6 +62,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
           children: [
        IconButton(
               icon: AnimatedIcon(
+                size: 30,
                 icon: AnimatedIcons.menu_arrow,
                 progress: _animationController,
               ),

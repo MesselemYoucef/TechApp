@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 Color primaryGreen = Color.fromRGBO(135, 90, 123, 1);
 Color itemBackground = Color.fromARGB(65, 77, 92, 1);
+Color productDetailsBG = Color.fromARGB(167, 197, 235, 1);
 
 List<BoxShadow> shadowList = [
   BoxShadow(color: Colors.grey[300], blurRadius: 30, offset: Offset(0, 1))
