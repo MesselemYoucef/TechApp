@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 Color primaryGreen = Color.fromRGBO(135, 90, 123, 1);
-Color itemBackground = Color.fromARGB(65, 77, 92, 1);
-Color productDetailsBG = Color.fromARGB(167, 197, 235, 1);
+Color itemBackground = Color.fromRGBO(65, 77, 92, 1);
+Color productDetailsBG = Color.fromRGBO(135, 90, 123, 1);
 
 List<BoxShadow> shadowList = [
   BoxShadow(color: Colors.grey[300], blurRadius: 30, offset: Offset(0, 1))
@@ -15,7 +15,7 @@ List<Map> categories = [
   {'name': 'Desktops', 'iconPath': 'images/categories/desktop.png'},
   {'name': 'Mobiles', 'iconPath': 'images/categories/mobile.png'},
   {'name': 'Accessories', 'iconPath': 'images/categories/mouse.png'},
-  {'name': 'Printers', 'iconPath' : 'images/categories/printer.png'}
+  {'name': 'Printers', 'iconPath': 'images/categories/printer.png'}
 ];
 
 List<Map> drawerItems = [
@@ -32,7 +32,7 @@ List<Map> itemDetails = [
     'condition': '2 years',
     'distance': '2 KM',
     'image': 'images/CCTV-Camera1.png',
-    'category' : 'cctv'
+    'category': 'cctv'
   },
   {
     'productName': 'CCTV Camera2',
@@ -40,7 +40,7 @@ List<Map> itemDetails = [
     'condition': '2 years',
     'distance': '2 KM',
     'image': 'images/CCTV-Camera2.png',
-    'category' : 'cctv'
+    'category': 'cctv'
   },
   {
     'productName': 'CCTV Camera Dome 1',
@@ -48,7 +48,7 @@ List<Map> itemDetails = [
     'condition': '2 years',
     'distance': '2 KM',
     'image': 'images/CCTV-Dome-Camera1.png',
-    'category' : 'cctv'
+    'category': 'cctv'
   },
   {
     'productName': 'CCTV Camera Dome 2',
@@ -56,7 +56,7 @@ List<Map> itemDetails = [
     'condition': '2 years',
     'distance': '2 KM',
     'image': 'images/CCTV-Dome-Camera2.png',
-    'category' : 'cctv'
+    'category': 'cctv'
   },
   //////////////////////////////////////////
 ];
