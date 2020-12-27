@@ -160,6 +160,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   condition: itemDetails[index]['condition'],
                   distance: itemDetails[index]['distance'],
                   image: itemDetails[index]['image'],
+                  index: index
                 );
               },
             ),

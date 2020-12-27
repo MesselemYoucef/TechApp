@@ -8,6 +8,8 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   int _quantityCounter = 0;
+
+  Map data;
   void add() {
     if (_quantityCounter >= 0 && _quantityCounter < 10) {
       setState(() {
@@ -24,8 +26,11 @@ class _ProductDetailsState extends State<ProductDetails> {
     }
   }
 
+  
   @override
   Widget build(BuildContext context) {
+    data = ModalRoute.of(context).settings.arguments;
+    int index = data["index"]; // image index in the configuration.dart file
     return Scaffold(
       backgroundColor: Color.fromRGBO(135, 90, 123, 1),
       body: SingleChildScrollView(
@@ -43,7 +48,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     iconSize: 30,
                     color: Colors.white,
                     onPressed: () {
-                      print("back button pressed");
+                      Navigator.pop(context);
                     },
                   ),
                   IconButton(
@@ -61,9 +66,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               alignment: Alignment.topCenter,
               width: MediaQuery.of(context).size.width / 1.5,
               height: MediaQuery.of(context).size.height / 3,
-              child: Hero(
-                  tag: "images/CCTV-Camera1.png",
-                  child: Image.asset('images/CCTV-Camera1.png')),
+              child: Hero(tag: "$index",child: Image.asset("${itemDetails[index]['image']}")),
             ),
             Container(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
@@ -128,6 +131,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             height: 30,
                             width: 30,
                             child: FloatingActionButton(
+                              heroTag: null,
                               onPressed: minus,
                               child: Icon(
                                 Icons.remove,
@@ -150,6 +154,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             height: 30,
                             width: 30,
                             child: FloatingActionButton(
+                              heroTag: null,
                               onPressed: add,
                               child: Icon(
                                 Icons.add,
