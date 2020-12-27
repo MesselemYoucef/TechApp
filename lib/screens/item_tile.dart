@@ -7,7 +7,6 @@ class ItemTile extends StatelessWidget {
   final String condition;
   final String distance;
   final String image;
-  
 
   ItemTile(
       {this.productName,
@@ -19,11 +18,7 @@ class ItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        //Navigator.pushNamed(context, '/product_screen');
-        
-          Navigator.pushNamed(context, '/product_screen');
-       
-        
+        Navigator.pushNamed(context, '/product_details');
       },
       child: Container(
         height: 220,
@@ -37,14 +32,20 @@ class ItemTile extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: itemBackground,
                         borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(10),
-                            bottomRight: Radius.circular(20),
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(10)),
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(20),
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(10),
+                        ),
                       ),
                       margin: EdgeInsets.only(top: 20)),
                   Align(
-                      alignment: Alignment(0.0, 0.0), child: Image.asset(image))
+                    alignment: Alignment(0.0, 0.0),
+                    child: Hero(
+                      tag: "image",
+                      child: Image.asset(image),
+                    ),
+                  ),
                 ],
               ),
             ),
