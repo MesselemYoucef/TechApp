@@ -17,6 +17,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   AnimationController _animationController;
 
+  String category = 'cctv';
+
   void _handleOnPressed() {
     isDrawerOpen
         ? setState(() {
@@ -91,7 +93,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             padding: EdgeInsets.symmetric(horizontal: 20),
             margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20), color: Colors.white),
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+            ),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -118,8 +122,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   child: Column(children: [
                     GestureDetector(
                       onTap: () {
-                        print(
-                            "Category Tapped ${categories[index]['iconPath']}");
+                        print("Category Tapped ${categories[index]['name']}");
+                        setState(() {
+                          category = categories[index]['name'];
+                        });
                       },
                       child: Container(
                         padding: EdgeInsets.all(8),
@@ -154,14 +160,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             child: ListView.builder(
               itemCount: itemDetails.length,
               itemBuilder: (context, index) {
-                return ItemTile(
-                  productName: itemDetails[index]['productName'],
-                  price: itemDetails[index]['price'],
-                  condition: itemDetails[index]['condition'],
-                  distance: itemDetails[index]['distance'],
-                  image: itemDetails[index]['image'],
-                  index: index
-                );
+                if (itemDetails[index]['category'] == category) {
+                  return ItemTile(index: index);
+                } else {
+                  return Container();
+                }
               },
             ),
           ),

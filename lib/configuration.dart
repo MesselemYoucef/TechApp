@@ -12,10 +12,11 @@ List<BoxShadow> shadowList = [
 List<Map> categories = [
   {'name': 'CCTV', 'iconPath': 'images/categories/camera-cctv.png'},
   {'name': 'DSLR', 'iconPath': 'images/categories/camera-dslr.png'},
-  {'name': 'Desktops', 'iconPath': 'images/categories/desktop.png'},
+  {'name': 'Laptop', 'iconPath': 'images/categories/desktop.png'},
   {'name': 'Mobiles', 'iconPath': 'images/categories/mobile.png'},
   {'name': 'Accessories', 'iconPath': 'images/categories/mouse.png'},
-  {'name': 'Printers', 'iconPath': 'images/categories/printer.png'}
+  {'name': 'Printers', 'iconPath': 'images/categories/printer.png'},
+  {'name': 'iPad', 'iconPath': 'images/categories/iPad.png'}
 ];
 
 List<Map> drawerItems = [
@@ -32,7 +33,7 @@ List<Map> itemDetails = [
     'condition': '2 years',
     'distance': '2 KM',
     'image': 'images/CCTV-Camera1.png',
-    'category': 'cctv'
+    'category': 'CCTV'
   },
   {
     'productName': 'CCTV Camera2',
@@ -40,7 +41,7 @@ List<Map> itemDetails = [
     'condition': '2 years',
     'distance': '2 KM',
     'image': 'images/CCTV-Camera2.png',
-    'category': 'cctv'
+    'category': 'CCTV'
   },
   {
     'productName': 'CCTV Camera Dome 1',
@@ -48,7 +49,7 @@ List<Map> itemDetails = [
     'condition': '2 years',
     'distance': '2 KM',
     'image': 'images/CCTV-Dome-Camera1.png',
-    'category': 'cctv'
+    'category': 'CCTV'
   },
   {
     'productName': 'CCTV Camera Dome 2',
@@ -56,7 +57,89 @@ List<Map> itemDetails = [
     'condition': '2 years',
     'distance': '2 KM',
     'image': 'images/CCTV-Dome-Camera2.png',
-    'category': 'cctv'
+    'category': 'CCTV'
   },
   //////////////////////////////////////////
+  {
+    'productName': 'Laptop 1',
+    'price': '88.39 AED',
+    'condition': '1 years',
+    'distance': '1 KM',
+    'image': 'images/laptop1.png',
+    'category': 'Laptop'
+  },
+  {
+    'productName': 'Laptop 2',
+    'price': '88.39 AED',
+    'condition': '1 years',
+    'distance': '1 KM',
+    'image': 'images/laptop2.png',
+    'category': 'Laptop'
+  },
+  {
+    'productName': 'Laptop 3',
+    'price': '88.39 AED',
+    'condition': '1 years',
+    'distance': '1 KM',
+    'image': 'images/laptop3.png',
+    'category': 'Laptop'
+  },
+  {
+    'productName': 'Laptop 4',
+    'price': '88.39 AED',
+    'condition': '1 years',
+    'distance': '1 KM',
+    'image': 'images/laptop4.png',
+    'category': 'Laptop'
+  },
+  {
+    'productName': 'Laptop 5',
+    'price': '88.39 AED',
+    'condition': '1 years',
+    'distance': '1 KM',
+    'image': 'images/laptop5.png',
+    'category': 'Laptop'
+  },
+  //////////////////////////////////////////
+  {
+    'productName': 'iPad 1',
+    'price': '88.39 AED',
+    'condition': '1 years',
+    'distance': '1 KM',
+    'image': 'images/iPad1.png',
+    'category': 'iPad'
+  },
+  {
+    'productName': 'iPad 2',
+    'price': '88.39 AED',
+    'condition': '1 years',
+    'distance': '1 KM',
+    'image': 'images/iPad2.png',
+    'category': 'iPad'
+  },
+  //////////////////////////////////////////
+  {
+    'productName': 'Printer 1',
+    'price': '88.39 AED',
+    'condition': '1 years',
+    'distance': '1 KM',
+    'image': 'images/printer1.png',
+    'category': 'Printers'
+  },
+  {
+    'productName': 'Printer 2',
+    'price': '88.39 AED',
+    'condition': '1 years',
+    'distance': '1 KM',
+    'image': 'images/printer2.png',
+    'category': 'Printers'
+  },
+  {
+    'productName': 'Printer 3',
+    'price': '88.39 AED',
+    'condition': '1 years',
+    'distance': '1 KM',
+    'image': 'images/printer3.png',
+    'category': 'Printers'
+  }
 ];
