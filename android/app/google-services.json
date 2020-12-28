@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "405370285400",
+    "project_id": "teck-app-4b896",
+    "storage_bucket": "teck-app-4b896.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405370285400:android:1435527a98f61b328b092d",
+        "android_client_info": {
+          "package_name": "com.youcef.tech_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405370285400-p73i4979g11gagpoe44p7oppejff3aeb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMQnUpSI3dhBH6oSuYOYtzaJbx5bmDtKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405370285400-p73i4979g11gagpoe44p7oppejff3aeb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
