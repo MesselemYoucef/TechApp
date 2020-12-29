@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   Widget build(BuildContext context) {
     return StreamProvider<List<ProductModel>>.value(
-      value: ProductServices(categoryName: "CCTV").products,
+      value: ProductServices(categoryName: category).products,
           child: AnimatedContainer(
         transform: Matrix4.translationValues(xOffset, yOffset, 0)
           ..scale(scaleFactor),
@@ -177,15 +177,13 @@ class ProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       final products = Provider.of<List<ProductModel>>(context) ?? [];
-      products.forEach((element) {
-        print("==============> ${element.name}");
-      });
+
     return Container(
       child: Expanded(
         child: ListView.builder(
-          itemCount: itemDetails.length,
+          itemCount: products.length,
           itemBuilder: (context, index) {
-              return ItemTile(index: index);
+              return ItemTile(product: products[index]);
           },
         ),
       ),

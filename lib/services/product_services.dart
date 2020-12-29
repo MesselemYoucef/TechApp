@@ -9,12 +9,14 @@ class ProductServices{
   final CollectionReference productCollection = FirebaseFirestore.instance.collection("products");
 
 
-  Future updateProduct(String name, String category, String image, String condition) async{
+  Future updateProduct(String name, String category, String image, String condition, String price, String distance) async{
     return await productCollection.doc().set({
       'name': name,
       'category': category,
       'image' : image,
-      'condition' : condition
+      'condition' : condition,
+      'price' : price,
+      'distance' : distance
     });
   }
 
@@ -25,7 +27,9 @@ class ProductServices{
         name: doc.data()['name'] ?? '',
         category: categoryName,
         condition: doc.data()['condition'] ?? '',
-        image: doc.data()['image'] ?? ''
+        image: doc.data()['image'] ?? '',
+        price: doc.data()['price'] ?? '',
+        distance: doc.data()['distance'] ?? ''
       );
     }).toList();
   }

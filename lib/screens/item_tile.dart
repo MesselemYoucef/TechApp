@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:petsApp/configuration.dart';
+import 'package:petsApp/models/product_model.dart';
+import 'package:petsApp/services/storage_services.dart';
 
 class ItemTile extends StatelessWidget {
-  final int index;
+  final ProductModel product;
 
-  ItemTile({this.index});
+
+  Future<Widget> _getImage(BuildContext context, String imageName )async{
+    Image image;
+    await StorageServices.loadImage(context, imageName).then((value){
+      image = Image.network(value.toString(), fit: BoxFit.scaleDown);
+    });
+    return image;
+  }
+
+  ItemTile({this.product});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/product_details',
-            arguments: {'index': index});
+            arguments: {'product': product});
       },
       child: Container(
         height: 220,
@@ -34,8 +45,25 @@ class ItemTile extends StatelessWidget {
                   Align(
                     alignment: Alignment(0.0, 0.0),
                     child: Hero(
-                      tag: "$index",
-                      child: Image.asset(itemDetails[index]["image"]),
+                      tag: "${product.image}",
+                      //child: Image.asset("${product.image}"),
+                      child: FutureBuilder(
+                        future: _getImage(context, product.image),
+                        builder: (context, snapshot){
+                          if(snapshot.connectionState == ConnectionState.done){
+                            return Container(
+                              child: snapshot.data,
+                            );
+                          }
+                          if(snapshot.connectionState == ConnectionState.waiting){
+                            return Container(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+
+                          return Container();
+                        },
+                      ),
                     ),
                   ),
                 ],
@@ -61,24 +89,24 @@ class ItemTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        itemDetails[index]["productName"],
+                        product.name,
                         style: TextStyle(
                             fontSize: 15.0, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        itemDetails[index]["price"],
+                        product.price,
                         style: TextStyle(
                           fontSize: 15.0,
                         ),
                       ),
-                      Text(itemDetails[index]["condition"]),
+                      Text(product.condition),
                       Container(
                         child: Row(children: [
                           Icon(
                             Icons.location_on,
                             color: Colors.blueGrey,
                           ),
-                          Text("Distance: ${itemDetails[index]['distance']}")
+                          Text("Distance: ${product.distance}")
                         ]),
                       )
                     ]),
