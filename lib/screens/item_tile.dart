@@ -6,10 +6,9 @@ import 'package:petsApp/services/storage_services.dart';
 class ItemTile extends StatelessWidget {
   final ProductModel product;
 
-
-  Future<Widget> _getImage(BuildContext context, String imageName )async{
+  Future<Widget> _getImage(BuildContext context, String imageName) async {
     Image image;
-    await StorageServices.loadImage(context, imageName).then((value){
+    await StorageServices.loadImage(context, imageName).then((value) {
       image = Image.network(value.toString(), fit: BoxFit.scaleDown);
     });
     return image;
@@ -45,17 +44,19 @@ class ItemTile extends StatelessWidget {
                   Align(
                     alignment: Alignment(0.0, 0.0),
                     child: Hero(
-                      tag: "${product.image}",
+                      tag: product.image,
                       //child: Image.asset("${product.image}"),
                       child: FutureBuilder(
                         future: _getImage(context, product.image),
-                        builder: (context, snapshot){
-                          if(snapshot.connectionState == ConnectionState.done){
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
                             return Container(
                               child: snapshot.data,
                             );
                           }
-                          if(snapshot.connectionState == ConnectionState.waiting){
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
                             return Container(
                               child: CircularProgressIndicator(),
                             );

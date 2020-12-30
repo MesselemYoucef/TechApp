@@ -21,7 +21,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("Company Logo",
+                  Text("POWERMAX",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,

@@ -28,18 +28,19 @@ class _ProductDetailsState extends State<ProductDetails> {
     }
   }
 
-  Future<Widget> _getImage(BuildContext context, String imageName) async{
+  Future<Widget> _getImage(BuildContext context, String imageName) async {
     Image image;
-    await StorageServices.loadImage(context, imageName).then((value){
+    await StorageServices.loadImage(context, imageName).then((value) {
       image = Image.network(value.toString(), fit: BoxFit.scaleDown);
     });
     return image;
   }
-  
+
   @override
   Widget build(BuildContext context) {
     data = ModalRoute.of(context).settings.arguments;
-    ProductModel product = data["product"]; // image index in the configuration.dart file
+    ProductModel product =
+        data["product"]; // image index in the configuration.dart file
     return Scaffold(
       backgroundColor: Color.fromRGBO(135, 90, 123, 1),
       body: SingleChildScrollView(
@@ -76,17 +77,15 @@ class _ProductDetailsState extends State<ProductDetails> {
               width: MediaQuery.of(context).size.width / 1.5,
               height: MediaQuery.of(context).size.height / 3,
               child: Hero(
-                tag: "${product.image}",
+                tag: product.image,
                 //child: Image.asset("${product.image}",
                 child: FutureBuilder(
                   future: _getImage(context, product.image),
-                  builder: (context, snapshot){
-                    if(snapshot.connectionState == ConnectionState.done){
-                      return Container(
-                        child: snapshot.data
-                      );
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return Container(child: snapshot.data);
                     }
-                    if(snapshot.connectionState == ConnectionState.waiting){
+                    if (snapshot.connectionState == ConnectionState.waiting) {
                       return Container(
                         child: CircularProgressIndicator(),
                       );
@@ -94,9 +93,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                     return Container();
                   },
                 ),
-                ),
               ),
-            
+            ),
             Container(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
               height: MediaQuery.of(context).size.height / 1.8,

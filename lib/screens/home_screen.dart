@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return StreamProvider<List<ProductModel>>.value(
       value: ProductServices(categoryName: category).products,
-          child: AnimatedContainer(
+      child: AnimatedContainer(
         transform: Matrix4.translationValues(xOffset, yOffset, 0)
           ..scale(scaleFactor),
         duration: Duration(milliseconds: 250),
@@ -127,7 +127,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     child: Column(children: [
                       GestureDetector(
                         onTap: () {
-                          print("Category Tapped ${categories[index]['name']}");
                           setState(() {
                             category = categories[index]['name'];
                           });
@@ -143,7 +142,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             categories[index]["iconPath"],
                             height: 40,
                             width: 40,
-                            color: Colors.grey[700],
                             fit: BoxFit.contain,
                           ),
                         ),
@@ -176,14 +174,14 @@ class ProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      final products = Provider.of<List<ProductModel>>(context) ?? [];
+    final products = Provider.of<List<ProductModel>>(context) ?? [];
 
     return Container(
       child: Expanded(
         child: ListView.builder(
           itemCount: products.length,
           itemBuilder: (context, index) {
-              return ItemTile(product: products[index]);
+            return ItemTile(product: products[index]);
           },
         ),
       ),

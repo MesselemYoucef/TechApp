@@ -10,13 +10,19 @@ List<BoxShadow> shadowList = [
 ];
 
 List<Map> categories = [
-  {'name': 'CCTV', 'iconPath': 'images/categories/camera-cctv.png'},
-  {'name': 'DSLR', 'iconPath': 'images/categories/camera-dslr.png'},
-  {'name': 'Laptop', 'iconPath': 'images/categories/desktop.png'},
-  {'name': 'Mobiles', 'iconPath': 'images/categories/mobile.png'},
-  {'name': 'Accessories', 'iconPath': 'images/categories/mouse.png'},
-  {'name': 'Printers', 'iconPath': 'images/categories/printer.png'},
-  {'name': 'iPad', 'iconPath': 'images/categories/iPad.png'}
+  {'name': 'CCTV', 'iconPath': 'images/categories/CCTV-icon-20201230.png'},
+  {'name': 'DSLR', 'iconPath': 'images/categories/dslr-icon-20201230.png'},
+  {'name': 'Laptop', 'iconPath': 'images/categories/laptop-icon-20201230.png'},
+  {'name': 'Mobiles', 'iconPath': 'images/categories/mobile-icon-20201230.png'},
+  {
+    'name': 'Accessories',
+    'iconPath': 'images/categories/accessories-icon-20201230.png'
+  },
+  {
+    'name': 'Printers',
+    'iconPath': 'images/categories/printer-icon-20201230.png'
+  },
+  {'name': 'iPad', 'iconPath': 'images/categories/ipad-icon-20201230.png'}
 ];
 
 List<Map> drawerItems = [
