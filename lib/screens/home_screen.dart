@@ -95,12 +95,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
             ),
             Container(
+             
               padding: EdgeInsets.symmetric(horizontal: 20),
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
+                border: Border.all(
+                  color: itemBackground,
+                  width: 1.0,
+                ),
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.white,
               ),
+              
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -119,6 +125,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             ),
             Container(
               height: 80,
+              color: Colors.transparent,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
@@ -135,8 +142,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           padding: EdgeInsets.all(8),
                           margin: EdgeInsets.only(left: 20),
                           decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: shadowList,
+                              color: Colors.transparent,
+                              border: Border.all(
+                                color: itemBackground,
+                                width: 1
+                              ),
                               borderRadius: BorderRadius.circular(5)),
                           child: Image.asset(
                             categories[index]["iconPath"],
