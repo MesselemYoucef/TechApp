@@ -95,7 +95,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
             ),
             Container(
-             
               padding: EdgeInsets.symmetric(horizontal: 20),
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
@@ -106,7 +105,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.white,
               ),
-              
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -139,19 +137,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           });
                         },
                         child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.all(2),
                           margin: EdgeInsets.only(left: 20),
                           decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              border: Border.all(
-                                color: itemBackground,
-                                width: 1
-                              ),
+                              color: itemBackground,
+                              border:
+                                  Border.all(color: itemBackground, width: 1),
                               borderRadius: BorderRadius.circular(5)),
                           child: Image.asset(
                             categories[index]["iconPath"],
-                            height: 40,
-                            width: 40,
+                            color: Colors.white,
+                            height: 50,
+                            width: 50,
                             fit: BoxFit.contain,
                           ),
                         ),
@@ -162,7 +159,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           child: Text(
                             categories[index]["name"],
                             style: TextStyle(
-                                fontSize: 10, fontWeight: FontWeight.bold),
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: itemBackground,
+                            ),
                           ))
                     ]),
                   );

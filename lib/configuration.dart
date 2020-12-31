@@ -12,7 +12,7 @@ List<BoxShadow> shadowList = [
 List<Map> categories = [
   {'name': 'CCTV', 'iconPath': 'images/categories/CCTV-icon-20201230.png'},
   {'name': 'DSLR', 'iconPath': 'images/categories/dslr-icon-20201230.png'},
-  {'name': 'Laptop', 'iconPath': 'images/categories/laptop-icon-20201230.png'},
+  {'name': 'Laptop', 'iconPath': 'images/categories/laptop-icon-20201231.png'},
   {'name': 'Mobiles', 'iconPath': 'images/categories/mobile-icon-20201230.png'},
   {
     'name': 'Accessories',
