@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:petsApp/home_page.dart';
 import 'package:petsApp/screens/product_details.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'screens/contact.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,10 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/',
+      initialRoute: '/contact_us',
       routes: {
         '/': (context) => HomePage(),
-        '/product_details': (context) => ProductDetails()
+        '/product_details': (context) => ProductDetails(),
+        '/contact_us' : (context) => Contact()
       },
     );
   }

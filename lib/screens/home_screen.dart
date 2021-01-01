@@ -11,6 +11,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+
+  //Variables for the animation of the home screen to be reduced and pushed aside
   double xOffset = 0;
   double yOffset = 0;
   double curvedEdges = 0;
@@ -21,6 +23,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   AnimationController _animationController;
 
   String category = 'CCTV';
+
+  Color itemIconColor = itemBackground; // for the category icon color
+  Color itemBackgroundColor = Colors.transparent; // background for the category item color
 
   void _handleOnPressed() {
     isDrawerOpen
@@ -121,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     Icon(Icons.settings)
                   ]),
             ),
+            //Categories List Section ==============>
             Container(
               height: 80,
               color: Colors.transparent,
@@ -128,6 +134,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
+                  if (category == categories[index]['name']){
+                      itemIconColor = Colors.white;
+                      itemBackgroundColor = itemBackground;
+                    }else{
+                      itemIconColor = itemBackground;
+                      itemBackgroundColor = Colors.white;
+                  }
                   return Container(
                     child: Column(children: [
                       GestureDetector(
@@ -140,13 +153,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           padding: EdgeInsets.all(2),
                           margin: EdgeInsets.only(left: 20),
                           decoration: BoxDecoration(
-                              color: itemBackground,
+                              color: itemBackgroundColor,
                               border:
                                   Border.all(color: itemBackground, width: 1),
                               borderRadius: BorderRadius.circular(5)),
                           child: Image.asset(
-                            categories[index]["iconPath"],
-                            color: Colors.white,
+                            "images/categories/${categories[index]["iconPath"]}",
+                            color: itemIconColor,
                             height: 50,
                             width: 50,
                             fit: BoxFit.contain,
