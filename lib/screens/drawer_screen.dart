@@ -39,7 +39,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             children: drawerItems
                 .map((element) => GestureDetector(
                       onTap: () {
-                        print("it is tapped");
+                        Navigator.pushNamed(context, "/contact_us");
                       },
                       child: Container(
                         padding: const EdgeInsets.all(8.0),

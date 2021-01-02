@@ -92,10 +92,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       ],
                     ),
                   ]),
-                  Icon(
-                    Icons.mail,
-                    color: Colors.grey[800],
-                  )
+                  IconButton(
+                    icon: Icon(
+                      Icons.mail,
+                      color: Colors.grey[800],
+                    ), 
+                    onPressed: (){
+                      Navigator.pushNamed(context, "/contact_us");
+                    }
+                    ),
                 ],
               ),
             ),
