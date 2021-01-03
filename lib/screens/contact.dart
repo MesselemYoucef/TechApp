@@ -31,7 +31,6 @@ class _ContactState extends State<Contact> {
   }
 
   //method for launching a phone call from the app
-
   _launchCall() async {
     const call = 'tel:+971528412896';
     if (await canLaunch(call)) {
@@ -77,11 +76,14 @@ class _ContactState extends State<Contact> {
                     )
                   ],
                 ),
-                Container(
-                  color: Colors.teal,
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 3,
-                  child: Image.asset("images/contact-us.png"),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                    color: itemBackground,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 3,
+                    child: Image.asset("images/contact-us.png"),
+                  ),
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
