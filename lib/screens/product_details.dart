@@ -36,13 +36,26 @@ class _ProductDetailsState extends State<ProductDetails> {
     return image;
   }
 
+  bool _isNotFavorite = false;
+  IconData favoriteIcon = Icons.favorite_border;
+
+
   @override
   Widget build(BuildContext context) {
     data = ModalRoute.of(context).settings.arguments;
     ProductModel product =
         data["product"]; // image index in the configuration.dart file
+
+        _togglefavorite(){
+          _isNotFavorite = !_isNotFavorite;
+          _isNotFavorite ? 
+          favoriteIcon = Icons.favorite
+          : 
+          favoriteIcon = Icons.favorite_border;
+        }
+      
     return Scaffold(
-      backgroundColor: Color.fromRGBO(135, 90, 123, 1),
+      backgroundColor: itemBackground,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -192,10 +205,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                           )
                         ],
                       ),
-                      Icon(
-                        Icons.favorite,
-                        color: Colors.red[900],
-                        size: 30,
+                      IconButton(
+                        onPressed: (){
+                            setState(() {
+                               _togglefavorite();
+                            });
+                        },
+                        icon: Icon( favoriteIcon,
+                                    color: Colors.red[900],
+                                    size: 30,
+                                )
                       )
                     ],
                   ),
@@ -206,7 +225,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         height: 40,
                         width: 60,
                         decoration: BoxDecoration(
-                            color: productDetailsBG,
+                            color: itemBackground,
                             borderRadius: BorderRadius.circular(5)),
                         child: Icon(
                           Icons.add_shopping_cart,
@@ -218,7 +237,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         height: 40,
                         width: MediaQuery.of(context).size.width / 1.5,
                         decoration: BoxDecoration(
-                            color: productDetailsBG,
+                            color: itemBackground,
                             borderRadius: BorderRadius.circular(5)),
                         child: Center(
                           child: Text(

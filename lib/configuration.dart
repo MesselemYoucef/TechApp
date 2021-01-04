@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 Color primaryGreen = Color.fromRGBO(135, 90, 123, 1);
-Color itemBackground = Color.fromRGBO(135, 90, 123, 1);
+//Color itemBackground = Color.fromRGBO(135, 90, 123, 1);
+Color itemBackground = Color.fromRGBO(25, 69, 107, 1);
 Color productDetailsBG = Color.fromRGBO(135, 90, 123, 1);
 
 List<BoxShadow> shadowList = [

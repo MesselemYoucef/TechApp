@@ -76,14 +76,10 @@ class _ContactState extends State<Contact> {
                     )
                   ],
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Container(
-                    color: itemBackground,
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height / 3,
-                    child: Image.asset("images/contact-us.png"),
-                  ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 3,
+                  child: Image.asset("images/contact-us.png"),
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
@@ -124,7 +120,7 @@ class _ContactState extends State<Contact> {
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 Icon(
-                                  Icons.mail_outline,
+                                  Icons.mail,
                                   color: itemBackground,
                                   size: 30,
                                 ),

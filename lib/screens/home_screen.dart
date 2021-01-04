@@ -215,13 +215,13 @@ class ProductList extends StatelessWidget {
         ),
       );
     } else {
-      return Container(
-        margin: EdgeInsets.symmetric(vertical: 20),
-        width: MediaQuery.of(context).size.width / 1.2,
-        color: Colors.transparent,
-        child: Image.asset(
-          "images/product-error.png",
-          fit: BoxFit.cover,
+      return Expanded(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Image.asset(
+            "images/product-error.png",
+            fit: BoxFit.contain,
+          ),
         ),
       );
     }
