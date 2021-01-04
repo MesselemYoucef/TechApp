@@ -11,7 +11,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-
   //Variables for the animation of the home screen to be reduced and pushed aside
   double xOffset = 0;
   double yOffset = 0;
@@ -25,7 +24,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   String category = 'CCTV';
 
   Color itemIconColor = itemBackground; // for the category icon color
-  Color itemBackgroundColor = Colors.transparent; // background for the category item color
+  Color itemBackgroundColor =
+      Colors.transparent; // background for the category item color
 
   void _handleOnPressed() {
     isDrawerOpen
@@ -93,14 +93,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     ),
                   ]),
                   IconButton(
-                    icon: Icon(
-                      Icons.mail,
-                      color: Colors.grey[800],
-                    ), 
-                    onPressed: (){
-                      Navigator.pushNamed(context, "/contact_us");
-                    }
-                    ),
+                      icon: Icon(
+                        Icons.mail,
+                        color: Colors.grey[800],
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/contact_us");
+                      }),
                 ],
               ),
             ),
@@ -139,12 +138,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
-                  if (category == categories[index]['name']){
-                      itemIconColor = Colors.white;
-                      itemBackgroundColor = itemBackground;
-                    }else{
-                      itemIconColor = itemBackground;
-                      itemBackgroundColor = Colors.white;
+                  if (category == categories[index]['name']) {
+                    itemIconColor = Colors.white;
+                    itemBackgroundColor = itemBackground;
+                  } else {
+                    itemIconColor = itemBackground;
+                    itemBackgroundColor = Colors.white;
                   }
                   return Container(
                     child: Column(children: [
@@ -204,15 +203,27 @@ class ProductList extends StatelessWidget {
   Widget build(BuildContext context) {
     final products = Provider.of<List<ProductModel>>(context) ?? [];
 
-    return Container(
-      child: Expanded(
-        child: ListView.builder(
-          itemCount: products.length,
-          itemBuilder: (context, index) {
-            return ItemTile(product: products[index]);
-          },
+    if (products.length != 0) {
+      return Container(
+        child: Expanded(
+          child: ListView.builder(
+            itemCount: products.length,
+            itemBuilder: (context, index) {
+              return ItemTile(product: products[index]);
+            },
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      return Container(
+        margin: EdgeInsets.symmetric(vertical: 20),
+        width: MediaQuery.of(context).size.width / 1.2,
+        color: Colors.transparent,
+        child: Image.asset(
+          "images/product-error.png",
+          fit: BoxFit.cover,
+        ),
+      );
+    }
   }
 }
