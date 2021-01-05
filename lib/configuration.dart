@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 Color primaryGreen = Color.fromRGBO(135, 90, 123, 1);
-//Color itemBackground = Color.fromRGBO(135, 90, 123, 1);
 Color itemBackground = Color.fromRGBO(25, 69, 107, 1);
 Color productDetailsBG = Color.fromRGBO(135, 90, 123, 1);
 
@@ -15,14 +14,8 @@ List<Map> categories = [
   {'name': 'DSLR', 'iconPath': 'dslr-icon-20201230.png'},
   {'name': 'Laptop', 'iconPath': 'laptop-icon-20201231.png'},
   {'name': 'Mobiles', 'iconPath': 'mobile-icon-20201230.png'},
-  {
-    'name': 'Accessories',
-    'iconPath': 'accessories-icon-20201230.png'
-  },
-  {
-    'name': 'Printers',
-    'iconPath': 'printer-icon-20201230.png'
-  },
+  {'name': 'Accessories', 'iconPath': 'accessories-icon-20201230.png'},
+  {'name': 'Printers', 'iconPath': 'printer-icon-20201230.png'},
   {'name': 'iPad', 'iconPath': 'ipad-icon-20201230.png'}
 ];
 

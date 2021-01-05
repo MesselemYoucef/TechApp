@@ -39,21 +39,19 @@ class _ProductDetailsState extends State<ProductDetails> {
   bool _isNotFavorite = false;
   IconData favoriteIcon = Icons.favorite_border;
 
-
   @override
   Widget build(BuildContext context) {
     data = ModalRoute.of(context).settings.arguments;
     ProductModel product =
         data["product"]; // image index in the configuration.dart file
 
-        _togglefavorite(){
-          _isNotFavorite = !_isNotFavorite;
-          _isNotFavorite ? 
-          favoriteIcon = Icons.favorite
-          : 
-          favoriteIcon = Icons.favorite_border;
-        }
-      
+    _togglefavorite() {
+      _isNotFavorite = !_isNotFavorite;
+      _isNotFavorite
+          ? favoriteIcon = Icons.favorite
+          : favoriteIcon = Icons.favorite_border;
+    }
+
     return Scaffold(
       backgroundColor: itemBackground,
       body: SingleChildScrollView(
@@ -206,16 +204,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                         ],
                       ),
                       IconButton(
-                        onPressed: (){
+                          onPressed: () {
                             setState(() {
-                               _togglefavorite();
+                              _togglefavorite();
                             });
-                        },
-                        icon: Icon( favoriteIcon,
-                                    color: Colors.red[900],
-                                    size: 30,
-                                )
-                      )
+                          },
+                          icon: Icon(
+                            favoriteIcon,
+                            color: Colors.red[900],
+                            size: 30,
+                          ))
                     ],
                   ),
                   Row(

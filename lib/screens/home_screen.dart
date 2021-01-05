@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     Text("Location"),
                     Row(
                       children: [
-                        Icon(Icons.location_on, color: primaryGreen),
+                        Icon(Icons.location_on, color: itemBackground),
                         Text("Dubai"),
                       ],
                     ),
@@ -157,10 +157,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           padding: EdgeInsets.all(2),
                           margin: EdgeInsets.only(left: 20),
                           decoration: BoxDecoration(
-                              color: itemBackgroundColor,
-                              border:
-                                  Border.all(color: itemBackground, width: 1),
-                              borderRadius: BorderRadius.circular(5)),
+                            color: itemBackgroundColor,
+                            border: Border.all(color: itemBackground, width: 1),
+                            borderRadius: BorderRadius.circular(5),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(1),
+                                spreadRadius: 1,
+                                blurRadius: 2,
+                                offset: Offset(2, 3),
+                              ),
+                            ],
+                          ),
                           child: Image.asset(
                             "images/categories/${categories[index]["iconPath"]}",
                             color: itemIconColor,
@@ -218,7 +226,7 @@ class ProductList extends StatelessWidget {
       return Expanded(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Image.asset(
+          child: Image.asset(
             "images/product-error.png",
             fit: BoxFit.contain,
           ),
