@@ -11,7 +11,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 50, bottom: 40, left: 10),
-      color: itemBackground.withOpacity(0.7),
+      color: Color.fromRGBO(0, 53, 57, 0.5),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[

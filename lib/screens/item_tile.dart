@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:petsApp/configuration.dart';
 import 'package:petsApp/models/product_model.dart';
 import 'package:petsApp/services/storage_services.dart';
@@ -52,7 +53,7 @@ class ItemTile extends StatelessWidget {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.done) {
-                                productImage = snapshot.data;
+                            productImage = snapshot.data;
                             return Container(
                               child: snapshot.data,
                             );
@@ -93,11 +94,12 @@ class ItemTile extends StatelessWidget {
                     children: [
                       Text(
                         product.name,
-                        style: TextStyle(
-                            fontSize: 15.0, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.fjallaOne(
+                          fontSize: 20,
+                        ),
                       ),
                       Text(
-                        product.price,
+                        "${product.price} AED",
                         style: TextStyle(
                           fontSize: 15.0,
                         ),

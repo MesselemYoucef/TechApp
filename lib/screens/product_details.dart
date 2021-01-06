@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:petsApp/models/product_model.dart';
-import 'package:petsApp/services/storage_services.dart';
 import 'package:petsApp/configuration.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProductDetails extends StatefulWidget {
   @override
@@ -11,7 +12,6 @@ class ProductDetails extends StatefulWidget {
 class _ProductDetailsState extends State<ProductDetails> {
   int _quantityCounter = 0;
 
- 
   void add() {
     if (_quantityCounter >= 0 && _quantityCounter < 10) {
       setState(() {
@@ -28,23 +28,13 @@ class _ProductDetailsState extends State<ProductDetails> {
     }
   }
 
-  Future<Widget> _getImage(BuildContext context, String imageName) async {
-    Image image;
-    await StorageServices.loadImage(context, imageName).then((value) {
-      image = Image.network(value.toString(), fit: BoxFit.scaleDown);
-    });
-    return image;
-  }
-
   bool _isNotFavorite = false;
   IconData favoriteIcon = Icons.favorite_border;
-
-  
 
   @override
   Widget build(BuildContext context) {
     // get the product info from the item Tile page
-   final Map data = ModalRoute.of(context).settings.arguments;
+    final Map data = ModalRoute.of(context).settings.arguments;
     ProductModel product =
         data["product"]; // image index in the configuration.dart file
     Image productImage = data["image"];
@@ -54,6 +44,17 @@ class _ProductDetailsState extends State<ProductDetails> {
       _isNotFavorite
           ? favoriteIcon = Icons.favorite
           : favoriteIcon = Icons.favorite_border;
+    }
+
+    // to send an enquery about the product
+    _mailURL(String productName) async {
+      String mail =
+          'mailto:messelemy@gmail.com?subject=Enquiry about ${product.name}';
+      if (await canLaunch(mail)) {
+        await launch(mail);
+      } else {
+        throw "error in opening the email";
+      }
     }
 
     return Scaffold(
@@ -81,7 +82,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     iconSize: 30,
                     color: Colors.white,
                     onPressed: () {
-                      print("back email pressed");
+                      Navigator.pushNamed(context, "/contact_us");
                     },
                   ),
                 ],
@@ -93,22 +94,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               height: MediaQuery.of(context).size.height / 3,
               child: Hero(
                 tag: product.image,
-                child: productImage   ,
-                //child: Image.asset("${product.image}",
-                // child: FutureBuilder(
-                //   future: _getImage(context, product.image),
-                //   builder: (context, snapshot) {
-                //     if (snapshot.connectionState == ConnectionState.done) {
-                //       return Container(child: snapshot.data);
-                //     }
-                //     if (snapshot.connectionState == ConnectionState.waiting) {
-                //       return Container(
-                //         child: CircularProgressIndicator(),
-                //       );
-                //     }
-                //     return Container();
-                //   },
-                // ),
+                child: productImage,
               ),
             ),
             Container(
@@ -122,6 +108,16 @@ class _ProductDetailsState extends State<ProductDetails> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Text(
+                      product.name,
+                      style: GoogleFonts.fjallaOne(
+                        fontSize: 35,
+                        color: Colors.grey[800],
+                      ),
+                    ),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -131,9 +127,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                           Text(
                             "Price",
                             style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[800]),
                           ),
                           Text(
                             "${product.price} AED",
@@ -145,11 +141,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "condition",
+                            "Condition",
                             style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[800]),
                           ),
                           Text(
                             product.condition,
@@ -217,7 +213,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           icon: Icon(
                             favoriteIcon,
                             color: Colors.red[900],
-                            size: 30,
+                            size: 35,
                           ))
                     ],
                   ),
@@ -236,19 +232,24 @@ class _ProductDetailsState extends State<ProductDetails> {
                           size: 30,
                         ),
                       ),
-                      Container(
-                        height: 40,
-                        width: MediaQuery.of(context).size.width / 1.5,
-                        decoration: BoxDecoration(
-                            color: itemBackground,
-                            borderRadius: BorderRadius.circular(5)),
-                        child: Center(
-                          child: Text(
-                            "Instant Checkout",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600),
+                      GestureDetector(
+                        onTap: () {
+                          _mailURL(product.name);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: MediaQuery.of(context).size.width / 1.5,
+                          decoration: BoxDecoration(
+                              color: itemBackground,
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Center(
+                            child: Text(
+                              "Make an enquiry",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           ),
                         ),
                       )
