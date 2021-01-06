@@ -93,7 +93,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               height: MediaQuery.of(context).size.height / 3,
               child: Hero(
                 tag: product.image,
-                child: productImage,
+                child: productImage   ,
                 //child: Image.asset("${product.image}",
                 // child: FutureBuilder(
                 //   future: _getImage(context, product.image),
