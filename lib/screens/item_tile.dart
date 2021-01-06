@@ -4,7 +4,8 @@ import 'package:petsApp/models/product_model.dart';
 import 'package:petsApp/services/storage_services.dart';
 
 class ItemTile extends StatelessWidget {
-  final ProductModel product;
+  ProductModel product;
+  Image productImage;
 
   Future<Widget> _getImage(BuildContext context, String imageName) async {
     Image image;
@@ -20,7 +21,7 @@ class ItemTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/product_details',
-            arguments: {'product': product});
+            arguments: {'product': product, "image": productImage});
       },
       child: Container(
         height: 220,
@@ -51,6 +52,7 @@ class ItemTile extends StatelessWidget {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.done) {
+                                productImage = snapshot.data;
                             return Container(
                               child: snapshot.data,
                             );

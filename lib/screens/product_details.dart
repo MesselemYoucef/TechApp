@@ -11,7 +11,7 @@ class ProductDetails extends StatefulWidget {
 class _ProductDetailsState extends State<ProductDetails> {
   int _quantityCounter = 0;
 
-  Map data;
+ 
   void add() {
     if (_quantityCounter >= 0 && _quantityCounter < 10) {
       setState(() {
@@ -39,11 +39,15 @@ class _ProductDetailsState extends State<ProductDetails> {
   bool _isNotFavorite = false;
   IconData favoriteIcon = Icons.favorite_border;
 
+  
+
   @override
   Widget build(BuildContext context) {
-    data = ModalRoute.of(context).settings.arguments;
+    // get the product info from the item Tile page
+   final Map data = ModalRoute.of(context).settings.arguments;
     ProductModel product =
         data["product"]; // image index in the configuration.dart file
+    Image productImage = data["image"];
 
     _togglefavorite() {
       _isNotFavorite = !_isNotFavorite;
@@ -89,21 +93,22 @@ class _ProductDetailsState extends State<ProductDetails> {
               height: MediaQuery.of(context).size.height / 3,
               child: Hero(
                 tag: product.image,
+                child: productImage,
                 //child: Image.asset("${product.image}",
-                child: FutureBuilder(
-                  future: _getImage(context, product.image),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      return Container(child: snapshot.data);
-                    }
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Container(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    return Container();
-                  },
-                ),
+                // child: FutureBuilder(
+                //   future: _getImage(context, product.image),
+                //   builder: (context, snapshot) {
+                //     if (snapshot.connectionState == ConnectionState.done) {
+                //       return Container(child: snapshot.data);
+                //     }
+                //     if (snapshot.connectionState == ConnectionState.waiting) {
+                //       return Container(
+                //         child: CircularProgressIndicator(),
+                //       );
+                //     }
+                //     return Container();
+                //   },
+                // ),
               ),
             ),
             Container(
@@ -131,7 +136,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             ),
                           ),
                           Text(
-                            "99.99 AED",
+                            "${product.price} AED",
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -140,14 +145,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Model",
+                            "condition",
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            "m-1546",
+                            product.condition,
                             style: TextStyle(fontSize: 20),
                           ),
                         ],

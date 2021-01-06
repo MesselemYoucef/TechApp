@@ -162,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             borderRadius: BorderRadius.circular(5),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(1),
+                                color: Colors.grey.withOpacity(0.7),
                                 spreadRadius: 1,
                                 blurRadius: 2,
                                 offset: Offset(2, 3),
