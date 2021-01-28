@@ -17,16 +17,21 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   double curvedEdges = 0;
   double scaleFactor = 1;
 
+  // bool var for the the drawer to check it if it is opened or not
   bool isDrawerOpen = false;
 
+  // to control the animation of the icon whether it is a menu icon or a back-arrow
   AnimationController _animationController;
 
+  // name of the category to start with
   String category = 'CCTV';
 
   Color itemIconColor = itemBackground; // for the category icon color
   Color itemBackgroundColor =
       Colors.transparent; // background for the category item color
 
+  //functionality to handle the homescreen animation whether to shrink or scale
+  // also to handle whe
   void _handleOnPressed() {
     isDrawerOpen
         ? setState(() {
@@ -48,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   @override
+  // setting up the animation controller for the icon to change its state
   void initState() {
     super.initState();
     _animationController =
