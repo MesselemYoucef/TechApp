@@ -61,9 +61,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   Widget build(BuildContext context) {
-    return StreamProvider<List<ProductModel>>.value(
+    return StreamProvider<List<ProductModel>>.value(// Stream for the products stores in db
       value: ProductServices(categoryName: category).products,
-      child: AnimatedContainer(
+      child: AnimatedContainer( 
         transform: Matrix4.translationValues(xOffset, yOffset, 0)
           ..scale(scaleFactor),
         duration: Duration(milliseconds: 250),
@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         child: Column(
           children: [
             SizedBox(height: 30),
-            Container(
+            Container(// holds the shrinking button + location + contact button
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 ],
               ),
             ),
-            Container(
+            Container(//Search bar for the product
               padding: EdgeInsets.symmetric(horizontal: 20),
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
@@ -136,14 +136,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     Icon(Icons.settings)
                   ]),
             ),
-            //Categories List Section ==============>
-            Container(
+            
+            Container(//List of the categories section
               height: 80,
               color: Colors.transparent,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
+                  //perform a check the the selected category to color the background and the image
                   if (category == categories[index]['name']) {
                     itemIconColor = Colors.white;
                     itemBackgroundColor = itemBackground;
@@ -152,19 +153,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     itemBackgroundColor = Colors.white;
                   }
                   return Container(
-                    child: Column(children: [
+                    child: Column(
+                      children: [
                       GestureDetector(
                         onTap: () {
                           setState(() {
-                            category = categories[index]['name'];
+                            category = categories[index]['name']; // when tapped it changes the category
                           });
                         },
-                        child: Container(
+                        child: Container(// category image
                           padding: EdgeInsets.all(2),
                           margin: EdgeInsets.only(left: 20),
                           decoration: BoxDecoration(
                             color: itemBackgroundColor,
-                            border: Border.all(color: itemBackground, width: 1),
+                            border: Border.all(color: itemBackground, width: 1,),
                             borderRadius: BorderRadius.circular(5),
                             boxShadow: [
                               BoxShadow(
@@ -185,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         ),
                       ),
                       SizedBox(height: 5),
-                      Container(
+                      Container(// category title
                           margin: EdgeInsets.only(left: 20),
                           child: Text(
                             categories[index]["name"],
@@ -200,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 },
               ),
             ),
-            ProductList(),
+            ProductList(),// calling the widgets that build the list of the products
           ],
         ),
       ),
@@ -208,27 +210,27 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 }
 
-class ProductList extends StatelessWidget {
+class ProductList extends StatelessWidget { // widget for the products list
   const ProductList({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final products = Provider.of<List<ProductModel>>(context) ?? [];
+    final products = Provider.of<List<ProductModel>>(context) ?? []; // provide to get the products with their ProductModel class
 
-    if (products.length != 0) {
+    if (products.length != 0) { // if there is a product to display
       return Container(
         child: Expanded(
-          child: ListView.builder(
+          child: ListView.builder(// products list builder
             itemCount: products.length,
             itemBuilder: (context, index) {
-              return ItemTile(product: products[index]);
+              return ItemTile(product: products[index]); // calling the item tile which is responsible for the shaping of each product and passing to it the object product
             },
           ),
         ),
       );
-    } else {
+    } else { // if there is no product to display, then, a not foud error image appears
       return Expanded(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),

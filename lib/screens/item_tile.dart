@@ -8,7 +8,7 @@ class ItemTile extends StatelessWidget {
   ProductModel product;
   Image productImage;
 
-  Future<Widget> _getImage(BuildContext context, String imageName) async {
+  Future<Widget> _getImage(BuildContext context, String imageName) async { // get the image from the cloud Storage
     Image image;
     await StorageServices.loadImage(context, imageName).then((value) {
       image = Image.network(value.toString(), fit: BoxFit.scaleDown);
@@ -16,15 +16,15 @@ class ItemTile extends StatelessWidget {
     return image;
   }
 
-  ItemTile({this.product});
+  ItemTile({this.product}); // initialize the product
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: () {// tap to go to the produclt details view
         Navigator.pushNamed(context, '/product_details',
-            arguments: {'product': product, "image": productImage});
+            arguments: {'product': product,  'image': productImage});
       },
-      child: Container(
+      child: Container(// container to hold all the product info
         height: 220,
         margin: EdgeInsets.symmetric(horizontal: 20),
         child: Row(
@@ -32,7 +32,7 @@ class ItemTile extends StatelessWidget {
             Expanded(
               child: Stack(
                 children: [
-                  Container(
+                  Container( //container to hold the picture of the product
                       decoration: BoxDecoration(
                           color: itemBackground,
                           borderRadius: BorderRadius.circular(10),
@@ -43,29 +43,29 @@ class ItemTile extends StatelessWidget {
                                 blurRadius: 5)
                           ]),
                       margin: EdgeInsets.only(top: 20)),
-                  Align(
+                  Align(// to put the main picture on top of the previous container
                     alignment: Alignment(0.0, 0.0),
                     child: Hero(
                       tag: product.image,
                       //child: Image.asset("${product.image}"),
                       child: FutureBuilder(
                         future: _getImage(context, product.image),
-                        builder: (context, snapshot) {
+                        builder: (context, snapshot) {// perform a checkup whether the connection state is don or not yet
                           if (snapshot.connectionState ==
-                              ConnectionState.done) {
+                              ConnectionState.done) { // succuss => display the product image
                             productImage = snapshot.data;
                             return Container(
                               child: snapshot.data,
                             );
                           }
                           if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
+                              ConnectionState.waiting) {// waiting => display the circular progress indicator
                             return Container(
                               child: CircularProgressIndicator(),
                             );
                           }
 
-                          return Container();
+                          return Container();// in case of failure => display empty container
                         },
                       ),
                     ),
@@ -73,7 +73,7 @@ class ItemTile extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
+            Expanded(// the product main info card
               child: Container(
                 margin: EdgeInsets.only(top: 60, bottom: 20),
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
@@ -82,7 +82,7 @@ class ItemTile extends StatelessWidget {
                       BoxShadow(
                           color: Colors.grey[500],
                           blurRadius: 10,
-                          offset: const Offset(2, 5))
+                          offset: const Offset(0, 5))
                     ],
                     color: Colors.white,
                     borderRadius: BorderRadius.only(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petsApp/configuration.dart';
-import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Contact extends StatefulWidget {
@@ -96,7 +95,7 @@ class _ContactState extends State<Contact> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    Container(
+                    Container(// Email Button
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white,
@@ -138,7 +137,7 @@ class _ContactState extends State<Contact> {
                         ),
                       ),
                     ),
-                    Container(
+                    Container(// Call Us Button
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white,
@@ -182,7 +181,7 @@ class _ContactState extends State<Contact> {
                     ),
                   ],
                 ),
-                Container(
+                Container(// FAQ 
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.white,
@@ -225,7 +224,7 @@ class _ContactState extends State<Contact> {
                   ),
                 ),
                 Center(
-                  child: Text("All Rights Reserved: Youcef"),
+                  child: Text("Youcef Messelem. All Rights Reserved"),
                 )
               ]),
         ),

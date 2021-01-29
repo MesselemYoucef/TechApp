@@ -12,7 +12,7 @@ class ProductDetails extends StatefulWidget {
 class _ProductDetailsState extends State<ProductDetails> {
   int _quantityCounter = 0;
 
-  void add() {
+  void add() {// increase the requested quantity counter
     if (_quantityCounter >= 0 && _quantityCounter < 10) {
       setState(() {
         _quantityCounter++;
@@ -20,7 +20,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     }
   }
 
-  void minus() {
+  void minus() {// dicrease the requested quantity
     if (_quantityCounter > 0) {
       setState(() {
         _quantityCounter--;
@@ -28,18 +28,18 @@ class _ProductDetailsState extends State<ProductDetails> {
     }
   }
 
-  bool _isNotFavorite = false;
+  bool _isNotFavorite = false; // check the favorite button status
   IconData favoriteIcon = Icons.favorite_border;
 
   @override
   Widget build(BuildContext context) {
     // get the product info from the item Tile page
-    final Map data = ModalRoute.of(context).settings.arguments;
+    final Map data = ModalRoute.of(context).settings.arguments; // getting the product object + image
     ProductModel product =
         data["product"]; // image index in the configuration.dart file
     Image productImage = data["image"];
 
-    _togglefavorite() {
+    _togglefavorite() {// to toggle between favorite icon or not
       _isNotFavorite = !_isNotFavorite;
       _isNotFavorite
           ? favoriteIcon = Icons.favorite
@@ -47,7 +47,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     }
 
     // to send an enquery about the product
-    _mailURL(String productName) async {
+    _mailURL(String productName) async { // mail the requested product
       String mail =
           'mailto:messelemy@gmail.com?subject=Enquiry about ${product.name}';
       if (await canLaunch(mail)) {
@@ -63,7 +63,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
+            Container(// container holding the return button + contact button
               margin: EdgeInsets.only(top: 30),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Row(
@@ -88,7 +88,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ],
               ),
             ),
-            Container(
+            Container(// product main image
               alignment: Alignment.topCenter,
               width: MediaQuery.of(context).size.width / 1.5,
               height: MediaQuery.of(context).size.height / 3,
@@ -97,7 +97,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 child: productImage,
               ),
             ),
-            Container(
+            Container(// product details
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
               height: MediaQuery.of(context).size.height / 1.8,
               decoration: BoxDecoration(
